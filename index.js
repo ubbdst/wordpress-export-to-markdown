@@ -90,7 +90,7 @@ function addContentImages(data, images) {
 	let regex = (/<img[^>]*src="(.+?\.(?:gif|jpg|png))"[^>]*>/gi);
 	let match;
 
-	getItemsOfType(data, 'post').forEach(post => {
+	getItemsOfType(data, 'page').forEach(post => {
 		let postId = post.post_id[0];
 		let postContent = post.encoded[0];
 		let postLink = post.link[0];
@@ -119,7 +119,7 @@ function collectPosts(data) {
 	// this is passed into getPostContent() for the markdown conversion
 	turndownService = initTurndownService();
 
-	return getItemsOfType(data, 'post')
+	return getItemsOfType(data, 'page')
 		.map(post => ({
 			// meta data isn't written to file, but is used to help with other things
 			meta: {
